@@ -110,18 +110,18 @@ function main() {
             .style("stroke-width", 1);
         
         // Add an unrelated annotation
-        svg.append("text")
-            .attr("x", 5) // Adjust the x position of the unrelated text
-            .attr("y", 30) // Adjust the y position of the unrelated text
-            .text("Hover over each arc of the pie chart to see")
-            .style("font-size", "17px")
-            .style("fill", "black")
-            .append("tspan") // Add a <tspan> element for the next line
-            .attr("x", 5) // Adjust the x position of the second line
-            .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
-            .text("the names of the players that represent that nationality.");
+        ///svg.append("text")
+           // .attr("x", 5) // Adjust the x position of the unrelated text
+           // .attr("y", 30) // Adjust the y position of the unrelated text
+          //  .text("Hover over each arc of the pie chart to see")
+          //  .style("font-size", "17px")
+           // .style("fill", "black")
+          //  .append("tspan") // Add a <tspan> element for the next line
+         //   .attr("x", 5) // Adjust the x position of the second line
+         //   .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
+         //   .text("the names of the players that represent that nationality.");
 
-        svg.append('g')
+         svg.append('g')
             .attr('transform', 'translate(' + (width / 2) + ',' + 20 + ')')
             .append('text')
             .text('Players\' Nationality Count')
