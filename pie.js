@@ -8,7 +8,7 @@ function main() {
             .attr('transform','translate(' + (width / 2 + 100) + ',' + height / 2 + ')');
 
     var color = d3.scaleOrdinal(["#ff0000", "#ff6c00", "#ffec00", "#d62728", "#59ff00",
-                                "#005dff", "#ae00ff", "#ff00d4", "#d35400 "]);
+                                "#005dff", "#ae00ff", "#ff00d4", "#d35400"]);
 
     var pie = d3.pie().value(function(d) {
         return d.count; // Use the "count" property for pie slices
