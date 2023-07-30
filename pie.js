@@ -93,7 +93,7 @@ function main() {
 
         arc.append('text')
             .attr('transform', function(d) { return 'translate(' + label.centroid(d) + ')'; })
-            .text(function(d) { return d.data.nationality; })
+            .text(function(d) { return d.data.ASG; })
             .style('font-size', '10px');
 
         // Add a shorter line connecting the unrelated annotation to the pie chart
