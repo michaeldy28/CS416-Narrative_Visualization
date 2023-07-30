@@ -29,7 +29,7 @@ function main() {
             var nationality = player.votedBy;
             if (!nationalityCounts.hasOwnProperty(nationality)) {
                 nationalityCounts[nationality] = {
-                    nationality: votedBy,
+                    votedBy: nationality,
                     count: 1,
                     players: [player.playerID]
                 };
