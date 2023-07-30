@@ -17,7 +17,7 @@ function main() {
     var path = d3.arc().outerRadius(radius - 40).innerRadius(0);
     var label = d3.arc().outerRadius(radius).innerRadius(radius - 250);
 
-    d3.dsv(';', 'HallOfFame.csv').then(function(data) {
+    d3.dsv(',', 'HallOfFame.csv').then(function(data) {
 
         var filteredData = data.filter(function (d) {
             return +d.inducted = "Y"; // Filter data for overall >= 89
