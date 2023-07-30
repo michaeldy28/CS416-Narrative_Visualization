@@ -20,7 +20,8 @@ function main() {
     d3.dsv(',', 'HallOfFame.csv').then(function(data) {
 
         var filteredData = data.filter(function (d) {
-            return +d.inducted == "Y"; // Filter data for overall >= 89
+            if(d["inducted"] == "Y"){
+            return d; }// Filter data for overall >= 89
         });
 
         // Create nationalityCounts as an object instead of an array
@@ -82,7 +83,7 @@ function main() {
 
                 // Display the array of players for the specific nationality
                 var votedByPlayers = d.data.playerID;
-                for (var i = 0; i < votedByyPlayers.length; i++) {
+                for (var i = 0; i < votedByPlayers.length; i++) {
                     tooltipText.append('tspan')
                                .attr('x', 30) // Adjust the x position of the additional text
                                .attr('dy', 20) // Adjust the y position of the additional text
