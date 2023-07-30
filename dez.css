@@ -76,3 +76,31 @@ h1 {
     font-size: 16px;
     line-height: 20px;
 }
+
+.main-svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  height: 600px;
+}
+
+.svg-header {
+  text-align: center;
+  color: black;
+  font: Arial, sans-serif;
+}
+
+circle {
+  fill: steelblue;
+  stroke: black;
+}
+
+#tooltip1 {
+  background-color: pink;
+  font: Arial, sans-serif;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+}
