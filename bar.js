@@ -51,4 +51,3 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
         .style("fill", "#69b3a2")
 
 });
-</script>
