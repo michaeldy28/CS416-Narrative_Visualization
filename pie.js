@@ -37,7 +37,7 @@ function main() {
         });
 
         // Convert the object to an array
-        var nationalityCountsArray = Object.values(ASGCounts);
+        var ASGCountsArray = Object.values(ASGCounts);
 
         var arc = g.selectAll('.arc')
                     .data(pie(ASGCountsArray))
