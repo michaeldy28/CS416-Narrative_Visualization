@@ -17,25 +17,25 @@ function main() {
     var path = d3.arc().outerRadius(radius - 40).innerRadius(0);
     var label = d3.arc().outerRadius(radius).innerRadius(radius - 250);
 
-    d3.dsv(';', 'fifa21.csv').then(function(data) {
+    d3.dsv(';', 'HallOfFame.csv').then(function(data) {
 
         var filteredData = data.filter(function (d) {
-            return +d.overall >= 89; // Filter data for overall >= 89
+            return +d.inducted = "Y"; // Filter data for overall >= 89
         });
 
         // Create nationalityCounts as an object instead of an array
         var nationalityCounts = {};
         filteredData.forEach(function(player) {
-            var nationality = player.nationality;
+            var nationality = player.votedBy;
             if (!nationalityCounts.hasOwnProperty(nationality)) {
                 nationalityCounts[nationality] = {
-                    nationality: nationality,
+                    nationality: votedBy,
                     count: 1,
-                    players: [player.name]
+                    players: [player.playerID]
                 };
             } else {
                 nationalityCounts[nationality].count++;
-                nationalityCounts[nationality].players.push(player.name);
+                nationalityCounts[nationality].players.push(player.playerID);
             }
         });
 
@@ -67,7 +67,7 @@ function main() {
                                         .attr('class', 'tooltip-text')
                                         .attr('x', 30) // Adjust the x position of the text
                                         .attr('y', height / 2) // Adjust the y position of the text
-                                        .text(d.data.nationality + ": " + d.data.count);
+                                        .text(d.data.votedBy + ": " + d.data.count);
 
 
                 tooltipText.append('tspan')
@@ -78,7 +78,7 @@ function main() {
                 tooltipText.append('tspan')
                 .attr('x', 30) // Adjust the x position of the additional text
                 .attr('dy', 20) // Adjust the y position of the additional text
-                .text("Players:");
+                .text("Basseball Player Ids by Baseball Reference:");
 
                 // Display the array of players for the specific nationality
                 var nationalityPlayers = d.data.players;
