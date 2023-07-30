@@ -5,7 +5,35 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-annotation.v2.min.js"></script>
     <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="piechart.js"></script>
     <link rel="stylesheet" href="dez.css">
+    <style>
+        /* Tooltip CSS */
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: blue;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Tooltip Box CSS */
+        .tooltip-box {
+            fill: yellow;
+            stroke: blue;
+            stroke-width: 1;
+            border-radius: 25px;
+        }
+
+        .tooltip-text {
+            fill: darkgreen;
+            font-size: 20px;
+            pointer-events: none;
+        }
+    </style>
   </head>
   
   <body>
@@ -15,6 +43,9 @@
         Number of people on the Baseball Hall of Fame Categorized by Voter Types
       </center>
     </h1>
+
+    <p class="p1">The following pie chart shows the distribution of players' nationalities in FIFA 21 with an overall rating of 89 or above.</p>
+    <svg width="1200" height="800"></svg>
     
     <div class="scene"></div> 
     <div class="navigation">
