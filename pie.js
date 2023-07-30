@@ -7,9 +7,9 @@ function main() {
     var g = svg.append("g")
             .attr('transform','translate(' + (width / 2 + 100) + ',' + height / 2 + ')');
 
-    var color = d3.scaleOrdinal(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
-                                "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
-                                "#aec7e8", "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5"]);
+    var color = d3.scaleOrdinal(["#FF0000", "#FF3300", "#FF6600", "#FF9900", "#FFCC00", "#FFFF00", "#CCFF00", "#99FF00", "#66FF00", "#33FF00",
+"#00FF00", "#00FF33", "#00FF66", "#00FF99", "#00FFCC", "#00FFFF", "#00CCFF", "#0099FF", "#0066FF", "#0033FF",
+"#0000FF", "#3300FF", "#6600FF", "#9900FF", "#CC00FF"]);
 
     var pie = d3.pie().value(function(d) {
         return d.count; // Use the "count" property for pie slices
@@ -18,39 +18,35 @@ function main() {
     var path = d3.arc().outerRadius(radius - 40).innerRadius(0);
     var label = d3.arc().outerRadius(radius).innerRadius(radius - 250);
 
-    d3.dsv(';', 'fifa21.csv').then(function(data) {
-
-        var filteredData = data.filter(function (d) {
-            return +d.overall >= 89; // Filter data for overall >= 89
-        });
+    d3.dsv(',', 'HallOfFame.csv').then(function(data) {
 
         // Create nationalityCounts as an object instead of an array
-        var nationalityCounts = {};
+        var ASGCounts = {};
         filteredData.forEach(function(player) {
-            var nationality = player.nationality;
-            if (!nationalityCounts.hasOwnProperty(nationality)) {
-                nationalityCounts[nationality] = {
-                    nationality: nationality,
+            var ASG = player.ASG;
+            if (!ASGCounts.hasOwnProperty(ASG)) {
+                ASGCounts[ASG] = {
+                    ASG: ASG,
                     count: 1,
-                    players: [player.name]
+                    players: [player.Name]
                 };
             } else {
-                nationalityCounts[nationality].count++;
-                nationalityCounts[nationality].players.push(player.name);
+                ASGCounts[ASG].count++;
+                ASGCounts[ASG].players.push(player.Name);
             }
         });
 
         // Convert the object to an array
-        var nationalityCountsArray = Object.values(nationalityCounts);
+        var nationalityCountsArray = Object.values(ASGCounts);
 
         var arc = g.selectAll('.arc')
-                    .data(pie(nationalityCountsArray))
+                    .data(pie(ASGCountsArray))
                     .enter().append('g')
                     .attr('class', 'arc');
 
         arc.append('path')
             .attr('d', path)
-            .attr('fill', function(d) { return color(d.data.nationality); })
+            .attr('fill', function(d) { return color(d.data.ASG); })
             .on('mouseover', function(event, d) {
                 // Show the tooltip on mouseover
                 var tooltip = svg.append('g')
@@ -68,7 +64,7 @@ function main() {
                                         .attr('class', 'tooltip-text')
                                         .attr('x', 30) // Adjust the x position of the text
                                         .attr('y', height / 2) // Adjust the y position of the text
-                                        .text(d.data.nationality + ": " + d.data.count);
+                                        .text(d.data.ASG + " All Star Games Played: " + d.data.count);
 
 
                 tooltipText.append('tspan')
@@ -82,12 +78,12 @@ function main() {
                 .text("Players:");
 
                 // Display the array of players for the specific nationality
-                var nationalityPlayers = d.data.players;
-                for (var i = 0; i < nationalityPlayers.length; i++) {
+                var ASGPlayers = d.data.players;
+                for (var i = 0; i < ASGPlayers.length; i++) {
                     tooltipText.append('tspan')
                                .attr('x', 30) // Adjust the x position of the additional text
                                .attr('dy', 20) // Adjust the y position of the additional text
-                               .text(nationalityPlayers[i]);
+                               .text(ASGPlayers[i]);
                 }
             })
             .on('mouseout', function(event, d) {
