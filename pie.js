@@ -24,26 +24,26 @@ function main() {
         });
 
         // Create nationalityCounts as an object instead of an array
-        var nationalityCounts = {};
+        var votedByCounts = {};
         filteredData.forEach(function(player) {
-            var nationality = player.votedBy;
-            if (!nationalityCounts.hasOwnProperty(nationality)) {
-                nationalityCounts[nationality] = {
-                    votedBy: nationality,
+            var votedBy = player.votedBy;
+            if (!votedByCounts.hasOwnProperty(votedBy)) {
+                votedByCounts[votedBy] = {
+                    votedBy: votedBy,
                     count: 1,
                     players: [player.playerID]
                 };
             } else {
-                nationalityCounts[nationality].count++;
-                nationalityCounts[nationality].players.push(player.playerID);
+                votedByCounts[votedBy].count++;
+                votedByCounts[votedBy].players.push(player.playerID);
             }
         });
 
         // Convert the object to an array
-        var nationalityCountsArray = Object.values(nationalityCounts);
+        var votedByCountsArray = Object.values(votedByCounts);
 
         var arc = g.selectAll('.arc')
-                    .data(pie(nationalityCountsArray))
+                    .data(pie(votedByCountsArray))
                     .enter().append('g')
                     .attr('class', 'arc');
 
@@ -81,12 +81,12 @@ function main() {
                 .text("Basseball Player Ids by Baseball Reference:");
 
                 // Display the array of players for the specific nationality
-                var nationalityPlayers = d.data.playerID;
-                for (var i = 0; i < nationalityPlayers.length; i++) {
+                var votedByPlayers = d.data.playerID;
+                for (var i = 0; i < votedByyPlayers.length; i++) {
                     tooltipText.append('tspan')
                                .attr('x', 30) // Adjust the x position of the additional text
                                .attr('dy', 20) // Adjust the y position of the additional text
-                               .text(nationalityPlayers[i]);
+                               .text(votedByPlayers[i]);
                 }
             })
             .on('mouseout', function(event, d) {
