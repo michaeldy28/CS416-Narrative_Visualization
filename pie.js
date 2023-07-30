@@ -20,6 +20,10 @@ function main() {
 
     d3.dsv(',', 'HallOfFame.csv').then(function(data) {
 
+        var filteredData = data.filter(function (d) {
+            return +d.Inducted >= 0; // Filter data for overall >= 89
+        });
+        
         // Create nationalityCounts as an object instead of an array
         var ASGCounts = {};
         filteredData.forEach(function(player) {
