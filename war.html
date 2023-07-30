@@ -49,8 +49,8 @@
 				// For each scene, the values should be within the bottom and top defined
                   				.enter()
                   				.append('circle')
-                          .attr("cx", function(d) {return cxs(d.OBP);})
-                          .attr("cy", function(d) {return cys(d.WAR*1000);})
+                          .attr("cx", function(d) {return cxs(+d.OBP);})
+                          .attr("cy", function(d) {return cys(+(d.WAR*1000);})
                           .attr("r", 5)
 				                  .attr("fill", "red")
 							            .on("mouseover", function(d) {
