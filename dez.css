@@ -11,20 +11,22 @@
 
     .prevBtn {
       position: fixed;
-      top: 40px;
-      left: 30px;
-      padding: 10px 20px;
-      font-size: 20px;
+      bottom: 40px;
+      left: 40px;
+      padding: 8px 24px;
+      font-size: 10px;
       margin: 0 5px;
+      border-radius: 4px;
       cursor: pointer
     }
 
     .nextBtn {
       position: fixed;
-      top: 40px;
+      bottom: 40px;
       right: 40px;
-      padding: 10px 20px;
-      font-size: 20px;
+      padding: 8px 24px;
+      font-size: 10px;
       margin: 0 5px;
+      border-radius: 4px;
       cursor: pointer
     }
