@@ -1,0 +1,30 @@
+.scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navigation {
+      margin-top: 0px;
+    }
+
+    .prevBtn {
+      position: fixed;
+      top: 40px;
+      left: 30px;
+      padding: 10px 20px;
+      font-size: 20px;
+      margin: 0 5px;
+      cursor: pointer
+    }
+
+    .nextBtn {
+      position: fixed;
+      top: 40px;
+      right: 40px;
+      padding: 10px 20px;
+      font-size: 20px;
+      margin: 0 5px;
+      cursor: pointer
+    }
