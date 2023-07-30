@@ -75,6 +75,7 @@
 					  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
 					  .call(d3.axisBottom(cxs)
 							  .tickValues([0,0.200,0.400,0.600,0.800,1.000])
+							  .tickFormat(d3.format(".0f")));
 							  
 					// create x-axis labels
 					d3.select("svg").append("text")
