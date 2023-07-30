@@ -49,7 +49,7 @@ function main() {
 
         arc.append('path')
             .attr('d', path)
-            .attr('fill', function(d) { return color(d.data.nationality); })
+            .attr('fill', function(d) { return color(d.data.votedBy); })
             .on('mouseover', function(event, d) {
                 // Show the tooltip on mouseover
                 var tooltip = svg.append('g')
@@ -81,7 +81,7 @@ function main() {
                 .text("Basseball Player Ids by Baseball Reference:");
 
                 // Display the array of players for the specific nationality
-                var nationalityPlayers = d.data.players;
+                var nationalityPlayers = d.data.playerID;
                 for (var i = 0; i < nationalityPlayers.length; i++) {
                     tooltipText.append('tspan')
                                .attr('x', 30) // Adjust the x position of the additional text
@@ -96,7 +96,7 @@ function main() {
 
         arc.append('text')
             .attr('transform', function(d) { return 'translate(' + label.centroid(d) + ')'; })
-            .text(function(d) { return d.data.nationality; })
+            .text(function(d) { return d.data.votedBy; })
             .style('font-size', '10px');
 
         // Add a shorter line connecting the unrelated annotation to the pie chart
