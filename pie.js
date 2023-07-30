@@ -101,13 +101,13 @@ function main() {
             .style('font-size', '10px');
 
         // Add a shorter line connecting the unrelated annotation to the pie chart
-        var line = svg.append("line")
-            .attr("x1", 140) // x position of the start of the line (at the unrelated annotation)
-            .attr("y1", 60) // y position of the start of the line (at the unrelated annotation)
-            .attr("x2", 350) // x position of the end of the line (at the shorter end point)
-            .attr("y2", 300) // y position of the end of the line (at the shorter end point)
-            .style("stroke", "black")
-            .style("stroke-width", 1);
+        //var line = svg.append("line")
+           // .attr("x1", 140) // x position of the start of the line (at the unrelated annotation)
+          //  .attr("y1", 60) // y position of the start of the line (at the unrelated annotation)
+           // .attr("x2", 350) // x position of the end of the line (at the shorter end point)
+          //  .attr("y2", 300) // y position of the end of the line (at the shorter end point)
+          //  .style("stroke", "black")
+          //  .style("stroke-width", 1);
         
         // Add an unrelated annotation
         ///svg.append("text")
