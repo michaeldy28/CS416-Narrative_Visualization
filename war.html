@@ -16,6 +16,8 @@
     </h1>
 	<svg class="main-svg"></svg>
 			<script>
+				var start = 1;
+				var data;
     async function init() {
 	        // import the csv dataset  
 	                data = await d3.csv("world_gdp_growth_rate.csv");
@@ -27,6 +29,8 @@
 						.attr('style', 'position: absolute; opacity: 0;');
 					
 	  }
+		if (start == 1) {
+			drawSVG()}
 
     function drawSVG() {
 					// Variables for the method
