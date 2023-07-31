@@ -92,15 +92,32 @@ h1 {
 }
 
 circle {
-  fill: steelblue;
+  fill: "#69b3a2";
   stroke: black;
 }
 
-#tooltip1 {
-  background-color: pink;
-  font: Arial, sans-serif;
-  padding: 10px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-}
+
+.tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: blue;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Tooltip Box CSS */
+        .tooltip-box {
+            fill: yellow;
+            stroke: blue;
+            stroke-width: 1;
+            border-radius: 25px;
+        }
+
+        .tooltip-text {
+            fill: darkgreen;
+            font-size: 20px;
+            pointer-events: none;
+        }
