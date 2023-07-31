@@ -11,7 +11,7 @@
   <body onload='init()'>
     <h1>
       <center>
-        Scatter Plot Chart of wae43
+        Scatter Plot Chart of wae434
       </center>
     </h1>
     <svg class="main-svg"></svg>
@@ -20,7 +20,7 @@
     var data;
     async function init() {
 	        // import the csv dataset  
-	                data = await d3.csv("HallOfFame.csv");
+	                data = d3.csv("HallOfFame.csv");
 			d3.select('body')
 			  .append('div')
 			  .attr('id', 'tooltip')
