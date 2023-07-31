@@ -14,24 +14,19 @@
         Scatter Plot Chart of wa4
       </center>
     </h1>
-	<svg class="main-svg"></svg>
-			<script>
-				var start = 1;
-				var data;
+    <svg class="main-svg"></svg>
+    <script>
+    var start = 1;
+    var data;
     async function init() {
 	        // import the csv dataset  
 	                data = await d3.csv("HallOfFame.csv");
-					
-					// create a tooltip
-					d3.select('body')
-						.append('div')
-						.attr('id', 'tooltip')
-						.attr('style', 'position: absolute; opacity: 0;');
-					
-	  }
-		if (start == 1) {
-			drawSVG()}
-
+			d3.select('body')
+			  .append('div')
+			  .attr('id', 'tooltip')
+			  .attr('style', 'position: absolute; opacity: 0;');
+	}
+    if (start == 1) {drawSVG();}
     function drawSVG() {
 					// Variables for the method
 	                svgWidth = 500;
@@ -52,15 +47,15 @@
                           .attr("cx", function(d) {return cxs(+d.OBP);})
                           .attr("cy", function(d) {return cys(+d.WAR);})
                           .attr("r", 5)
-				                  .attr("fill", "red")
-							            .on("mouseover", function(d) {
-								d3.select('#tooltipl').transition().duration(200)
-									.style('opacity', 1);
-								d3.select('#tooltipl')
-									.style("left", (d3.event.pageX) + "px")             
-									.style("top", (d3.event.pageY - 50) + "px")
-									.html("Name: " + d.Name + "<br/>" + "Career WAR: " + d.WAR + "<br/>" + "On-Base Percentage: " + d.OBP);
-							});
+			  .attr("fill", "red")
+			  .on("mouseover", function(d) {
+				d3.select('#tooltipl').transition().duration(200)
+				  .style('opacity', 1);
+				d3.select('#tooltipl')
+				  .style("left", (d3.event.pageX) + "px")             
+				  .style("top", (d3.event.pageY - 50) + "px")
+				  .html("Name: " + d.Name + "<br/>" + "Career WAR: " + d.WAR + "<br/>" + "On-Base Percentage: " + d.OBP);
+				});
 					
 					// create y-axis
 					d3.select("svg").append("g")
