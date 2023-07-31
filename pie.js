@@ -62,7 +62,7 @@ function main() {
                                        .attr('width', 250) // Set the width of the tooltip box
                                        .attr('height', 200) // Set the height of the tooltip box
                                        .attr('x', 20) // Adjust the x position of the box
-                                       .attr('y', height + 300); // Adjust the y position of the box
+                                       .attr('y', height); // Adjust the y position of the box
 
                 var tooltipText = tooltip.append('text')
                                         .attr('class', 'tooltip-text')
@@ -111,7 +111,7 @@ function main() {
         
         // Add an unrelated annotation
         svg.append("text")
-            .attr("x", 300) // Adjust the x position of the unrelated text
+            .attr("x", 5) // Adjust the x position of the unrelated text
             .attr("y", 30) // Adjust the y position of the unrelated text
             .text("You can put your mouse over a section to inspect them closer")
             .style("font-size", "17px")
