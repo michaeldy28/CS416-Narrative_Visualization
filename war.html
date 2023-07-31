@@ -42,7 +42,7 @@
 	                // Convert string to integer using '+' notation on the data element
 	                d3.select("svg")
 	                        .append("g")
-	                        .attr("transform", "translate("+svgMargin+","25")")
+	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
 	                        .selectAll('dot')
 				.data(data)
 				// For each scene, the values should be within the bottom and top defined
@@ -94,21 +94,7 @@
 				  .attr("dy", ".75em")
 				  .attr("transform", "rotate(-90)")
 				  .text("Career Wins Above Replacement as Batters");  
-					  
-					// Create Annotations
-				const tooltip_annot = [
-					{
-					  note: {
-						label: "Check data values by pointing to the data points",
-						title: "Explore Data Points"
-					  },
-					  x: 400,
-					  y: 50,
-					}
-				]
-				
-				// permanent annotation
-				d3.select("svg").append("g").call(d3.annotation().annotations(tooltip_annot))
+	
 }
 	
     
