@@ -48,7 +48,7 @@
 				// For each scene, the values should be within the bottom and top defined
 				.enter()
 				.append('circle')
-		                        .attr("cx", function(d) {return cxs(+d.OBP);})
+		                        .attr("cx", function(d) {return cxs(+d.OBP*1000);})
 		                	.attr("cy", function(d) {return cys(+d.WAR);})
 		                        .attr("r", 5)
 					.attr("fill", "red")
