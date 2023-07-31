@@ -37,7 +37,7 @@
 	                svgWidth = 500;
 	                svgHeight = 500;
 	                svgMargin = 50;
-	                cxs = d3.scaleLinear().domain([0,1000]).range([0,svgWidth]);
+	                cxs = d3.scaleLinear().domain([0,1]).range([0,svgWidth]);
 	                cys = d3.scaleLinear().domain([-10,180]).range([svgHeight,0]);
 					
 			// Create an SVG to place scatterplot on for data
@@ -49,8 +49,8 @@
 				// For each scene, the values should be within the bottom and top defined
                   				.enter()
                   				.append('circle')
-                          .attr("cx", function(d) {return cxs(d.OBP);})
-                          .attr("cy", function(d) {return cys((d.WAR*1000);})
+                          .attr("cx", function(d) {return cxs(d.OBP;})
+                          .attr("cy", function(d) {return cys(d.WAR;})
                           .attr("r", 5)
 				                  .attr("fill", "red")
 							            .on("mouseover", function(d) {
@@ -74,7 +74,7 @@
 					d3.select("svg").append("g")
 					  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
 					  .call(d3.axisBottom(cxs)
-							  .tickValues([0,200,400,600,800,000])
+							  .tickValues([0,.2,.4,.6,.8,1])
 							  .tickFormat(d3.format(".0f")));
 							  
 					// create x-axis labels
@@ -83,7 +83,7 @@
 					  .attr("text-anchor", "end")
 					  .attr("x", (svgWidth/2) + svgMargin + 10)
 					  .attr("y", svgHeight + svgMargin + 35)
-					  .text("OBP");
+					  .text("Career On Base Percentage");
 					
 					// create y-axis label
 					d3.select("svg").append("text")
@@ -93,7 +93,7 @@
 					  .attr("x", -175)
 					  .attr("dy", ".75em")
 					  .attr("transform", "rotate(-90)")
-					  .text("Career WAR");  
+					  .text("Career Wins Above Replacement as Batters");  
 					  
 					// Create Annotations
 					const tooltip_annot = [
