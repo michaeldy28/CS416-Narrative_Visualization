@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset='UTF-8'>
+    <title>CS416 Narrative Visualization</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://github.com/susielu/d3-annotation/blob/master/d3-annotation.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dez.css">
+  </head>
 
+  <body onload='init()'>
+    <h1>
+      <center>
+        Scatter Plot Chart for the Relation between RBI and BA +
+      </center>
+    </h1>
+    <svg class="main-svg"></svg>
+    <script>
+    var start = 0;
+    var data;
+      async function init() {
+	                // import the csv dataset  
+	                data = await d3.csv("HallOfFame.csv");
+					
+					// create a tooltip
+					d3.select('body')
+						.append('div')
+						.attr('id', 'tooltip')
+						.attr('style', 'position: absolute; opacity: 0;');
+					
+			drawSVG();		
+	            }
+    function drawSVG() {
+					// Variables for the method
+	                svgWidth = 700;
+	                svgHeight = 700;
+	                svgMargin = 100;
+	                cxs = d3.scaleLinear().domain([0,2400]).range([0,svgWidth]);
+	                cys = d3.scaleLinear().domain([0,400]).range([svgHeight,0]);
+					
+			// Create an SVG to place scatterplot on for data
+	                // Convert string to integer using '+' notation on the data element
+	                d3.select("svg")
+	                        .append("g")
+	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
+	                        .selectAll('dot')
+				.data(data)
+				// For each scene, the values should be within the bottom and top defined
+				.enter()
+				.append('circle')
+		                        .attr("cx", function(d) {return cxs(+d.BA*1000);})
+		                	.attr("cy", function(d) {return cys(+d.RBI);})
+		                        .attr("r", 3)
+					.style("fill", "#69b3a2")
+					        .on("mouseover", function(d) {
+							d3.select('#tooltip').transition().duration(200).style('opacity', 1);
+							d3.select('#tooltip')
+							  .style("left", (d3.event.pageX) + "px")             
+							  .style("top", (d3.event.pageY - 50) + "px")
+							  .html("Name: " + d.Name + "<br/>" + "Career RBI: " + d.RBI + "<br/>" + "On-Base Percentage: " + d.BA);
+							}).on("mouseout", function() {
+            d3.select('#tooltip').style('opacity', 0);
+          });
+						
+				// create y-axis
+				d3.select("svg").append("g")
+				  .attr("transform","translate("+svgMargin+","+svgMargin+")")
+				  .call(d3.axisLeft(cys)
+						  .tickValues([100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400])
+						  .tickFormat(d3.format(".1f")));
+
+
+				// create x-axis
+				d3.select("svg").append("g")
+				  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
+				  .call(d3.axisBottom(cxs)
+						  .tickValues([0,100,200,300,400])
+						  .tickFormat(d3.format(".0f")));
+						  
+				// create x-axis labels
+				d3.select("svg").append("text")
+				  .attr("class", "xlabel")
+				  .attr("text-anchor", "end")
+				  .attr("x", (svgWidth/2) + svgMargin + 80)
+				  .attr("y", svgHeight + svgMargin + 35)
+				  .text("Career On Base Percentage");
+				
+				// create y-axis label
+				d3.select("svg").append("text")
+				  .attr("class", "ylabel")
+				  .attr("text-anchor", "end")
+				  .attr("y", 5)
+				  .attr("x", -250)
+				  .attr("dy", ".75em")
+				  .attr("transform", "rotate(-90)")
+				  .text("Career Wins Above Replacement as Batters");  
+	
+}
+	
+    
+    </script>
+
+    <div class="navigation">
+      <button class="prevBtn" onclick="redirectToPrevPage()">Prev.</button>
+    </div>
+
+    <script>
+    function redirectToPrevPage() {
+        window.location.href = "SO.html";
+    }
+    </script>
+    
+  </body>
+</html>
