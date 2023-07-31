@@ -111,7 +111,7 @@ function main() {
         
         // Add an unrelated annotation
         svg.append("text")
-            .attr("x", 5) // Adjust the x position of the unrelated text
+            .attr("x", 55) // Adjust the x position of the unrelated text
             .attr("y", 30) // Adjust the y position of the unrelated text
             .text("Hover over each arc of the pie chart to see")
             .style("font-size", "17px")
