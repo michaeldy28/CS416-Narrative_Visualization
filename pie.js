@@ -123,7 +123,7 @@ function main() {
                     .append("tspan") // Add a <tspan> element for the next line
             .attr("x", 5) // Adjust the x position of the second line
             .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
-            .text("only being introduced in 1933 and houses many late 1800s and early 1900s players");
+            .text("only being introduced in 1933 and houses many late 1800s and early 1900s hall members");
 
     });
 };
