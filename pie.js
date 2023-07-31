@@ -121,10 +121,5 @@ function main() {
             .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
             .text("the names of the players that represent that nationality.");
 
-        svg.append('g')
-            .attr('transform', 'translate(' + (width / 2) + ',' + 20 + ')')
-            .append('text')
-            .text('Players\' Nationality Count')
-            .attr('class', 'title');
     });
 };
