@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="dez.css">
   </head>
 
-  <body onload="init()">
+  <body onload='init()'>
     <h1>
       <center>
-        Scatter Plot Chart of one
+        Scatter Plot Chart of 
       </center>
     </h1>
 	<svg class="main-svg"></svg>
@@ -49,8 +49,8 @@
 				// For each scene, the values should be within the bottom and top defined
                   				.enter()
                   				.append('circle')
-                          .attr("cx", function(d) {return cxs(d.OBP;})
-                          .attr("cy", function(d) {return cys(d.WAR;})
+                          .attr("cx", function(d) {return cxs(+d.OBP);})
+                          .attr("cy", function(d) {return cys(+d.WAR);})
                           .attr("r", 5)
 				                  .attr("fill", "red")
 							            .on("mouseover", function(d) {
@@ -113,7 +113,10 @@
 					d3.select("svg").append("g").call(d3.annotation().annotations(tooltip_annot))
 
 				}
-			</script>
+	
+    
+    </script>
+
     <div class="navigation">
       <button class="prevBtn" onclick="redirectToPrevPage()">Prev.</button>
     </div>
