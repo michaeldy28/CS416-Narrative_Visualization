@@ -15,7 +15,7 @@ function main() {
         return d.count; // Use the "count" property for pie slices
     });
 
-    var path = d3.arc().outerRadius(radius - 40).innerRadius(0);
+    var path = d3.arc().outerRadius(radius - 40).innerRadius(40);
     var label = d3.arc().outerRadius(radius).innerRadius(radius - 250);
 
     d3.dsv(',', 'HallOfFame.csv').then(function(data) {
