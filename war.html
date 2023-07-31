@@ -58,7 +58,9 @@
 							  .style("left", (d3.event.pageX) + "px")             
 							  .style("top", (d3.event.pageY - 50) + "px")
 							  .html("Name: " + d.Name + "<br/>" + "Career WAR: " + d.WAR + "<br/>" + "On-Base Percentage: " + d.OBP);
-							});
+							}).on("mouseout", function() {
+            d3.select('#tooltip').style('opacity', 0);
+          });
 						
 				// create y-axis
 				d3.select("svg").append("g")
