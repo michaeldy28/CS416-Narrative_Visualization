@@ -4,101 +4,113 @@
     <meta charset='UTF-8'>
     <title>CS416 Narrative Visualization</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/d3-annotation@2.5.0/dist/d3-annotation.min.js"></script>
+    <script src="https://github.com/susielu/d3-annotation/blob/master/d3-annotation.min.js"></script>
     <link rel="stylesheet" type="text/css" href="dez.css">
   </head>
 
-  <body onload='drawScatterplot()'>
+  <body onload='drawSVG()'>
     <h1>
       <center>
-        Scatter Plot Chart
+        Scatter Plot Chart offucking
       </center>
     </h1>
     <svg class="main-svg"></svg>
     <script>
-      async function drawScatterplot() {
-        // Load data asynchronously using await and d3.csv
-        const data = await d3.csv("HallOfFame.csv");
+    var start = 1;
+    var data;
+      async function init() {
+	                // import the csv dataset  
+	                data = await d3.csv("world_gdp_growth_rate.csv");
+					
+					// create a tooltip
+					d3.select('body')
+						.append('div')
+						.attr('id', 'tooltip')
+						.attr('style', 'position: absolute; opacity: 0;');
+					
+					drawSVG();
+	            }
+    function drawSVG() {
+					// Variables for the method
+	                svgWidth = 500;
+	                svgHeight = 500;
+	                svgMargin = 50;
+	                cxs = d3.scaleLinear().domain([0,1000]).range([0,svgWidth]);
+	                cys = d3.scaleLinear().domain([-10,180]).range([svgHeight,0]);
+					
+			// Create an SVG to place scatterplot on for data
+	                // Convert string to integer using '+' notation on the data element
+	                d3.select("svg")
+	                        .append("g")
+	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
+	                        .selectAll('scatter-dots')
+				.data(data)
+				// For each scene, the values should be within the bottom and top defined
+				.enter()
+				.append('circle')
+		                        .attr("cx", function(d) {return cxs(+d.OBP);})
+		                	.attr("cy", function(d) {return cys(+d.WAR);})
+		                        .attr("r", 5)
+					.attr("fill", "red")
+					        .on("mouseover", function(d) {
+							d3.select('#tooltipl').transition().duration(200)
+							  .style('opacity', 1);
+							d3.select('#tooltipl')
+							  .style("left", (d3.event.pageX) + "px")             
+							  .style("top", (d3.event.pageY - 50) + "px")
+							  .html("Name: " + d.Name + "<br/>" + "Career WAR: " + d.WAR + "<br/>" + "On-Base Percentage: " + d.OBP);
+							});
+						
+				// create y-axis
+				d3.select("svg").append("g")
+				  .attr("transform","translate("+svgMargin+","+svgMargin+")")
+				  .call(d3.axisLeft(cys)
+						  .tickValues([-10,0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170])
+						  .tickFormat(d3.format(".1f")));
 
-        // Variables for the method
-        svgWidth = 500;
-        svgHeight = 500;
-        svgMargin = 50;
-        cxs = d3.scaleLinear().domain([0, 1000]).range([0, svgWidth]);
-        cys = d3.scaleLinear().domain([-10, 180]).range([svgHeight, 0]);
 
-        // Create an SVG to place scatterplot on for data
-        d3.select(".main-svg") // Correctly select the SVG element with the class "main-svg"
-          .attr("width", svgWidth + 2 * svgMargin)
-          .attr("height", svgHeight + 2 * svgMargin)
-          .append("g")
-          .attr("transform", "translate(" + svgMargin + "," + svgMargin + ")")
-          .selectAll('dot')
-          .data(data)
-          .enter()
-          .append('circle')
-          .attr("cx", function(d) {return cxs(+d.OBP);})
-          .attr("cy", function(d) {return cys(+d.WAR);})
-          .attr("r", 5)
-          .attr("fill", "red")
-          .on("mouseover", function(d) {
-            d3.select('#tooltip').transition().duration(200)
-              .style('opacity', 1);
-            d3.select('#tooltip')
-              .style("left", (d3.event.pageX) + "px")
-              .style("top", (d3.event.pageY - 50) + "px")
-              .html("Name: " + d.Name + "<br/>" + "Career WAR: " + d.WAR + "<br/>" + "On-Base Percentage: " + d.OBP);
-          });
-
-        // create y-axis
-        d3.select(".main-svg").append("g") // Correctly select the SVG element with the class "main-svg"
-          .attr("transform", "translate(" + svgMargin + "," + svgMargin + ")")
-          .call(d3.axisLeft(cys)
-            .tickValues([-10, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170])
-            .tickFormat(d3.format(".1f")));
-
-        // create x-axis
-        d3.select(".main-svg").append("g") // Correctly select the SVG element with the class "main-svg"
-          .attr("transform", "translate(" + svgMargin + "," + (svgHeight + svgMargin) + ")")
-          .call(d3.axisBottom(cxs)
-            .tickValues([0, 200, 400, 600, 800, 1000])
-            .tickFormat(d3.format(".0f")));
-
-        // create x-axis labels
-        d3.select(".main-svg").append("text") // Correctly select the SVG element with the class "main-svg"
-          .attr("class", "xlabel")
-          .attr("text-anchor", "end")
-          .attr("x", (svgWidth / 2) + svgMargin + 10)
-          .attr("y", svgHeight + svgMargin + 35)
-          .text("Career On Base Percentage");
-
-        // create y-axis label
-        d3.select(".main-svg").append("text") // Correctly select the SVG element with the class "main-svg"
-          .attr("class", "ylabel")
-          .attr("text-anchor", "end")
-          .attr("y", 3)
-          .attr("x", -175)
-          .attr("dy", ".75em")
-          .attr("transform", "rotate(-90)")
-          .text("Career Wins Above Replacement as Batters");
-
-        // Create Annotations
-        const tooltip_annot = [
-          {
-            note: {
-              label: "Check data values by pointing to the data points",
-              title: "Explore Data Points"
-            },
-            x: 400,
-            y: 50,
-          }
-        ]
-
-        // permanent annotation
-        d3.select(".main-svg").append("g") // Correctly select the SVG element with the class "main-svg"
-          .call(d3.annotation().annotations(tooltip_annot));
-      }
-
+				// create x-axis
+				d3.select("svg").append("g")
+				  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
+				  .call(d3.axisBottom(cxs)
+						  .tickValues([0,200,400,600,800,1000])
+						  .tickFormat(d3.format(".0f")));
+						  
+				// create x-axis labels
+				d3.select("svg").append("text")
+				  .attr("class", "xlabel")
+				  .attr("text-anchor", "end")
+				  .attr("x", (svgWidth/2) + svgMargin + 10)
+				  .attr("y", svgHeight + svgMargin + 35)
+				  .text("Career On Base Percentage");
+				
+				// create y-axis label
+				d3.select("svg").append("text")
+				  .attr("class", "ylabel")
+				  .attr("text-anchor", "end")
+				  .attr("y", 3)
+				  .attr("x", -175)
+				  .attr("dy", ".75em")
+				  .attr("transform", "rotate(-90)")
+				  .text("Career Wins Above Replacement as Batters");  
+					  
+					// Create Annotations
+				const tooltip_annot = [
+					{
+					  note: {
+						label: "Check data values by pointing to the data points",
+						title: "Explore Data Points"
+					  },
+					  x: 400,
+					  y: 50,
+					}
+				]
+				
+				// permanent annotation
+				d3.select("svg").append("g").call(d3.annotation().annotations(tooltip_annot))
+}
+	
+    
     </script>
 
     <div class="navigation">
@@ -106,9 +118,9 @@
     </div>
 
     <script>
-      function redirectToPrevPage() {
+    function redirectToPrevPage() {
         window.location.href = "index.html";
-      }
+    }
     </script>
     
   </body>
