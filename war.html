@@ -50,8 +50,8 @@
 				.append('circle')
 		                        .attr("cx", function(d) {return cxs(+d.OBP*1000);})
 		                	.attr("cy", function(d) {return cys(+d.WAR);})
-		                        .attr("r", 5)
-					.attr("fill", "red")
+		                        .attr("r", 3)
+					.style("fill", "#69b3a2")
 					        .on("mouseover", function(d) {
 							d3.select('#tooltip').transition().duration(200).style('opacity', 1);
 							d3.select('#tooltip')
@@ -81,7 +81,7 @@
 				d3.select("svg").append("text")
 				  .attr("class", "xlabel")
 				  .attr("text-anchor", "end")
-				  .attr("x", (svgWidth/2) + svgMargin + 10)
+				  .attr("x", (svgWidth/2) + svgMargin + 80)
 				  .attr("y", svgHeight + svgMargin + 35)
 				  .text("Career On Base Percentage");
 				
@@ -89,8 +89,8 @@
 				d3.select("svg").append("text")
 				  .attr("class", "ylabel")
 				  .attr("text-anchor", "end")
-				  .attr("y", 3)
-				  .attr("x", -175)
+				  .attr("y", 5)
+				  .attr("x", -250)
 				  .attr("dy", ".75em")
 				  .attr("transform", "rotate(-90)")
 				  .text("Career Wins Above Replacement as Batters");  
@@ -107,6 +107,15 @@
     <script>
     function redirectToPrevPage() {
         window.location.href = "index.html";
+    }
+
+<div class="navigation">
+      <button class="prevBtn" onclick="redirectToNextPage()">Next.</button>
+    </div>
+
+    <script>
+    function redirectToNextPage() {
+        window.location.href = "SO.html";
     }
     </script>
     
