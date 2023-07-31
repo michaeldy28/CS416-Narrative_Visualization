@@ -100,26 +100,6 @@ function main() {
             .text(function(d) { return d.data.ASG; })
             .style('font-size', '10px');
 
-        // Add a shorter line connecting the unrelated annotation to the pie chart
-        var line = svg.append("line")
-            .attr("x1", 140) // x position of the start of the line (at the unrelated annotation)
-            .attr("y1", 60) // y position of the start of the line (at the unrelated annotation)
-            .attr("x2", 350) // x position of the end of the line (at the shorter end point)
-            .attr("y2", 300) // y position of the end of the line (at the shorter end point)
-            .style("stroke", "black")
-            .style("stroke-width", 1);
-        
-        // Add an unrelated annotation
-        svg.append("text")
-            .attr("x", 55) // Adjust the x position of the unrelated text
-            .attr("y", 30) // Adjust the y position of the unrelated text
-            .text("Hover the mouse to see the players that correlate with")
-            .style("font-size", "17px")
-            .style("fill", "black")
-            .append("tspan") // Add a <tspan> element for the next line
-            .attr("x", 5) // Adjust the x position of the second line
-            .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
-            .text("the number of all star games they played in.");
 
     });
 };
