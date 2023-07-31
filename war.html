@@ -3,7 +3,7 @@
   <head>
     <meta charset='UTF-8'>
     <title>CS416 Narrative Visualization</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://github.com/susielu/d3-annotation/blob/master/d3-annotation.js"></script>
     <link rel="stylesheet" href="dez.css">
   </head>
@@ -11,7 +11,7 @@
   <body onload='init()'>
     <h1>
       <center>
-        Scatter Plot Chart of w 
+        Scatter Plot Chart of wa
       </center>
     </h1>
 	<svg class="main-svg"></svg>
@@ -106,8 +106,6 @@
 						  y: svgMargin,
 						}
 					]
-					
-				
 					
 					// permanent annotation
 					d3.select("svg").append("g").call(d3.annotation().annotations(tooltip_annot))
