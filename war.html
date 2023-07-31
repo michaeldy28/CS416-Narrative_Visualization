@@ -8,26 +8,15 @@
     <link rel="stylesheet" type="text/css" href="dez.css">
   </head>
 
-  <body onload='init()'>
+  <body onload='drawSVG()'>
     <h1>
       <center>
-        Scatter Plot Chart of wae4340
+        Scatter Plot Chart offuck
       </center>
     </h1>
     <svg class="main-svg"></svg>
     <script>
-    var start = 1;
-    var data;
-    async function init() {
-	        // import the csv dataset  
-	                data = d3.csv("HallOfFame.csv");
-			d3.select('body')
-			  .append('div')
-			  .attr('id', 'tooltip')
-			  .attr('style', 'position: absolute; opacity: 0;');
-	}
-    if (start == 1) {drawSVG();}
-	    
+    var data = d3.csv("HallOfFame.csv"); 
     function drawSVG() {
 					// Variables for the method
 	                svgWidth = 500;
@@ -42,6 +31,7 @@
 	                        .append("g")
 	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
 	                        .selectAll('scatter-dots')
+				.data(data)
 				// For each scene, the values should be within the bottom and top defined
 				.enter()
 				.append('circle')
