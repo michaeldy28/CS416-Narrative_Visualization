@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="dez.css">
   </head>
 
-  <body>
+  <body onload="init()">
     <h1>
       <center>
         Scatter Plot Chart of one
@@ -74,7 +74,7 @@
 					d3.select("svg").append("g")
 					  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
 					  .call(d3.axisBottom(cxs)
-							  .tickValues([0,0.200,0.400,0.600,0.800,1.000])
+							  .tickValues([0,200,400,600,800,000])
 							  .tickFormat(d3.format(".0f")));
 							  
 					// create x-axis labels
