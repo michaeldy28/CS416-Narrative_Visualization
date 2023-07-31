@@ -35,7 +35,7 @@
 	                svgWidth = 500;
 	                svgHeight = 500;
 	                svgMargin = 50;
-	                cxs = d3.scaleLinear().domain([0,1000]).range([0,svgWidth]);
+	                cxs = d3.scaleLinear().domain([0,500]).range([0,svgWidth]);
 	                cys = d3.scaleLinear().domain([-10,180]).range([svgHeight,0]);
 					
 			// Create an SVG to place scatterplot on for data
@@ -73,7 +73,7 @@
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
 				  .call(d3.axisBottom(cxs)
-						  .tickValues([0,200,400,600,800,1000])
+						  .tickValues([0,100,200,300,400,5000])
 						  .tickFormat(d3.format(".0f")));
 						  
 				// create x-axis labels
