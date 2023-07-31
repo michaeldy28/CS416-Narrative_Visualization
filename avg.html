@@ -11,7 +11,7 @@
   <body onload='init()'>
     <h1>
       <center>
-        Scatter Plot Chart for the Relation between RBI and BA +
+        Scatter Plot Chart for the Relation between RBI and BA 
       </center>
     </h1>
     <svg class="main-svg"></svg>
@@ -35,8 +35,8 @@
 	                svgWidth = 700;
 	                svgHeight = 700;
 	                svgMargin = 100;
-	                cxs = d3.scaleLinear().domain([0,2400]).range([0,svgWidth]);
-	                cys = d3.scaleLinear().domain([0,400]).range([svgHeight,0]);
+	                cxs = d3.scaleLinear().domain([0,400]).range([0,svgWidth]);
+	                cys = d3.scaleLinear().domain([0,2400]).range([svgHeight,0]);
 					
 			// Create an SVG to place scatterplot on for data
 	                // Convert string to integer using '+' notation on the data element
@@ -83,7 +83,7 @@
 				  .attr("text-anchor", "end")
 				  .attr("x", (svgWidth/2) + svgMargin + 80)
 				  .attr("y", svgHeight + svgMargin + 35)
-				  .text("Career On Base Percentage");
+				  .text("Career Batting Average");
 				
 				// create y-axis label
 				d3.select("svg").append("text")
@@ -93,7 +93,7 @@
 				  .attr("x", -250)
 				  .attr("dy", ".75em")
 				  .attr("transform", "rotate(-90)")
-				  .text("Career Wins Above Replacement as Batters");  
+				  .text("Career Runners Batted In");  
 	
 }
 	
