@@ -36,6 +36,12 @@ h1 {
     text-align: center;
 }
 
+.l1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    padding: 10px;
+}
+
 .arc text {
     font: 10px sans-serif;
     text-anchor: middle;
