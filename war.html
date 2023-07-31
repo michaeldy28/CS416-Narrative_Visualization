@@ -11,7 +11,7 @@
   <body onload='init()'>
     <h1>
       <center>
-        Scatter Plot Chart for the Relation between WAR and OBP
+        Scatter Plot Chart for the Relation between WAR and OBP +
       </center>
     </h1>
     <svg class="main-svg"></svg>
@@ -53,8 +53,7 @@
 		                        .attr("r", 5)
 					.attr("fill", "red")
 					        .on("mouseover", function(d) {
-							d3.select('#tooltip').transition().duration(200)
-							  .style('opacity', 1);
+							d3.select('#tooltip').style('opacity', 1);
 							d3.select('#tooltip')
 							  .style("left", (d3.event.pageX) + "px")             
 							  .style("top", (d3.event.pageY - 50) + "px")
