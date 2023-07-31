@@ -43,6 +43,7 @@
 	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
 	                        .selectAll("dot")
 				// For each scene, the values should be within the bottom and top defined
+				.data()
 				.enter()
 				.append('circle')
 	                        .attr("cx", function(d) {return cxs(+d.OBP);})
