@@ -11,7 +11,7 @@
   <body onload='init()'>
     <h1>
       <center>
-        Scatter Plot Chart for the Relation between WAR and OBP 
+        Scatter Plot Chart for the Relation between WAR and OBP +
       </center>
     </h1>
     <svg class="main-svg"></svg>
@@ -34,7 +34,7 @@
 					// Variables for the method
 	                svgWidth = 500;
 	                svgHeight = 500;
-	                svgMargin = 10;
+	                svgMargin = 50;
 	                cxs = d3.scaleLinear().domain([0,500]).range([0,svgWidth]);
 	                cys = d3.scaleLinear().domain([-10,180]).range([svgHeight,0]);
 					
@@ -64,7 +64,7 @@
 						
 				// create y-axis
 				d3.select("svg").append("g")
-				  .attr("transform","translate("+svgMargin+",0)")
+				  .attr("transform","translate("+svgMargin+","+svgMargin+")")
 				  .call(d3.axisLeft(cys)
 						  .tickValues([-10,0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170])
 						  .tickFormat(d3.format(".1f")));
