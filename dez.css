@@ -110,14 +110,14 @@ circle {
 
         /* Tooltip Box CSS */
         .tooltip-box {
-            fill: yellow;
-            stroke: blue;
-            stroke-width: 1;
+            fill: grey;
+            stroke: black;
+            stroke-width: 2;
             border-radius: 25px;
         }
 
         .tooltip-text {
-            fill: darkgreen;
+            fill: black;
             font-size: 20px;
             pointer-events: none;
         }
