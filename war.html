@@ -11,7 +11,7 @@
   <body onload='init()'>
     <h1>
       <center>
-        Scatter Plot Chart of wae4
+        Scatter Plot Chart of wae43
       </center>
     </h1>
     <svg class="main-svg"></svg>
@@ -43,7 +43,7 @@
 	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
 	                        .selectAll("dot")
 				// For each scene, the values should be within the bottom and top defined
-				.data()
+				.data(data)
 				.enter()
 				.append('circle')
 	                        .attr("cx", function(d) {return cxs(+d.OBP);})
