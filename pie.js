@@ -66,7 +66,7 @@ function main() {
 
                 var tooltipText = tooltip.append('text')
                                         .attr('class', 'tooltip-text')
-                                        .attr('x', 100) // Adjust the x position of the text
+                                        .attr('x', 5) // Adjust the x position of the text
                                         .attr('y', height) // Adjust the y position of the text
                                         .text(d.data.ASG + " All Star Games Played: " + d.data.count);
 
@@ -113,13 +113,13 @@ function main() {
         svg.append("text")
             .attr("x", 55) // Adjust the x position of the unrelated text
             .attr("y", 30) // Adjust the y position of the unrelated text
-            .text("Hover over each arc of the pie chart to see")
+            .text("Hover the mouse to see the players that correlate with")
             .style("font-size", "17px")
             .style("fill", "black")
             .append("tspan") // Add a <tspan> element for the next line
             .attr("x", 5) // Adjust the x position of the second line
             .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
-            .text("the names of the players that represent that nationality.");
+            .text("the number of all star games they played in.");
 
     });
 };
