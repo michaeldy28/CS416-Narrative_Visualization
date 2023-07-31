@@ -11,12 +11,12 @@
   <body onload='init()'>
     <h1>
       <center>
-        Scatter Plot Chart offuckinghellian
+        Scatter Plot Chart offuckinghelliana
       </center>
     </h1>
     <svg class="main-svg"></svg>
     <script>
-    var start = 1;
+    var start = 0;
     var data;
       async function init() {
 	                // import the csv dataset  
@@ -28,9 +28,8 @@
 						.attr('id', 'tooltip')
 						.attr('style', 'position: absolute; opacity: 0;');
 					
-					
+			drawSVG();		
 	            }
-	    if (start==1){drawSVG();}
     function drawSVG() {
 					// Variables for the method
 	                svgWidth = 500;
