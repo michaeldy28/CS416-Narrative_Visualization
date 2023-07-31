@@ -62,7 +62,7 @@ function main() {
                                        .attr('width', 250) // Set the width of the tooltip box
                                        .attr('height', 200) // Set the height of the tooltip box
                                        .attr('x', 20) // Adjust the x position of the box
-                                       .attr('y', height - 40); // Adjust the y position of the box
+                                       .attr('y', height + 300); // Adjust the y position of the box
 
                 var tooltipText = tooltip.append('text')
                                         .attr('class', 'tooltip-text')
