@@ -35,8 +35,8 @@
 	                svgWidth = 700;
 	                svgHeight = 700;
 	                svgMargin = 100;
-	                cxs = d3.scaleLinear().domain([0,500]).range([0,svgWidth]);
-	                cys = d3.scaleLinear().domain([-10,180]).range([svgHeight,0]);
+	                cxs = d3.scaleLinear().domain([0,3000]).range([0,svgWidth]);
+	                cys = d3.scaleLinear().domain([0,3000]).range([svgHeight,0]);
 					
 			// Create an SVG to place scatterplot on for data
 	                // Convert string to integer using '+' notation on the data element
@@ -48,7 +48,7 @@
 				// For each scene, the values should be within the bottom and top defined
 				.enter()
 				.append('circle')
-		                        .attr("cx", function(d) {return cxs(+d.SO*1000);})
+		                        .attr("cx", function(d) {return cxs(+d.SO);})
 		                	.attr("cy", function(d) {return cys(+d.BB);})
 		                        .attr("r", 3)
 					.style("fill", "#69b3a2")
@@ -57,7 +57,7 @@
 							d3.select('#tooltip')
 							  .style("left", (d3.event.pageX) + "px")             
 							  .style("top", (d3.event.pageY - 50) + "px")
-							  .html("Name: " + d.Name + "<br/>" + "Career BB: " + d.BB + "<br/>" + "On-Base Percentage: " + d.SO);
+							  .html("Name: " + d.Name + "<br/>" + "Career BB: " + d.BB + "<br/>" + "Career Strikeouts: " + d.SO);
 							}).on("mouseout", function() {
             d3.select('#tooltip').style('opacity', 0);
           });
