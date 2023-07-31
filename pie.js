@@ -62,7 +62,7 @@ function main() {
                                        .attr('width', 250) // Set the width of the tooltip box
                                        .attr('height', 200) // Set the height of the tooltip box
                                        .attr('x', 20) // Adjust the x position of the box
-                                       .attr('y', height); // Adjust the y position of the box
+                                       .attr('y', height / 2 - 40); // Adjust the y position of the box
 
                 var tooltipText = tooltip.append('text')
                                         .attr('class', 'tooltip-text')
@@ -113,13 +113,13 @@ function main() {
         svg.append("text")
             .attr("x", 5) // Adjust the x position of the unrelated text
             .attr("y", 30) // Adjust the y position of the unrelated text
-            .text("You can put your mouse over a section to inspect them closer")
+            .text("Hover over each arc of the pie chart to see")
             .style("font-size", "17px")
             .style("fill", "black")
             .append("tspan") // Add a <tspan> element for the next line
             .attr("x", 5) // Adjust the x position of the second line
             .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
-            .text("this section is particularly large due to the All Star game only being introduced in 1933");
+            .text("the names of the players that represent that nationality.");
 
     });
 };
