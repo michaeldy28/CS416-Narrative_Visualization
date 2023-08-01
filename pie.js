@@ -47,10 +47,10 @@ function main() {
         var ASGCountsArray = Object.values(ASGCounts);
 
         var line = svg.append("line")
-            .attr("x1", width/2 +150) // x position of the start of the line (at the unrelated annotation)
-            .attr("y1", height/2 - 20) // y position of the start of the line (at the unrelated annotation)
-            .attr("x2", width/2 + 350) // x position of the end of the line (at the shorter end point)
-            .attr("y2", height/2 - 170) // y position of the end of the line (at the shorter end point)
+            .attr("x1", (width/2) +150) // x position of the start of the line (at the unrelated annotation)
+            .attr("y1", (height/2) - 20) // y position of the start of the line (at the unrelated annotation)
+            .attr("x2", (width/2) + 350) // x position of the end of the line (at the shorter end point)
+            .attr("y2", (height/2) - 170) // y position of the end of the line (at the shorter end point)
             .style("stroke", "black")
             .style("stroke-width", 1);
         
