@@ -34,20 +34,20 @@
     }
 
 h1 {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: Helvetica, sans-serif;
     text-align: center;
 }
 
 .p1 {
-    font-family: Arial, sans-serif;
+    font-family: Palatino, URW Palladio L, serif;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
 }
 
 .p2 {
-    font-family: Arial, sans-serif;
+    font-family: Palatino, URW Palladio L, serif;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
 }
 
 .arc text {
@@ -56,13 +56,7 @@ h1 {
 }
 
 .arc path {
-    stroke: white;
-}
-
-.title {
-    fill: darkblue;
-    font-weight: bold;
-    font-size: 20px;
+    stroke: black;
 }
 
 #tooltip {
@@ -116,16 +110,15 @@ circle {
             z-index: 9999;
         }
 
-        /* Tooltip Box CSS */
-        .tooltip-box {
-            fill: white;
-            stroke: white;
-            stroke-width: 2;
-            border-radius: 25px;
-        }
+.tooltip-box {
+    fill: white;
+    stroke: white;
+    stroke-width: 2;
+    border-radius: 25px;
+}
 
-        .tooltip-text {
-            fill: black;
-            font-size: 20px;
-            pointer-events: none;
-        }
+.tooltip-text {
+    fill: black;
+    font-size: 20px;
+    pointer-events: none;
+}
