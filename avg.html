@@ -18,11 +18,12 @@
     <script>
     var start = 0;
     var data;
+	    var line;
+	    var svg;
       async function init() {
-	                // import the csv dataset  
+	               svg = d3.select("svg");
 	                data = await d3.csv("HallOfFame.csv");
 					
-					// create a tooltip
 					d3.select('body')
 						.append('div')
 						.attr('id', 'tooltip')
@@ -31,21 +32,32 @@
 			drawSVG();		
 	            }
     function drawSVG() {
-					// Variables for the method
 	                svgWidth = 700;
 	                svgHeight = 700;
 	                svgMargin = 100;
 	                cxs = d3.scaleLinear().domain([0,400]).range([0,svgWidth]);
 	                cys = d3.scaleLinear().domain([0,2400]).range([svgHeight,0]);
+
+	    		line = svg.append("line")
+		            .attr("x1", 250) 
+		            .attr("y1", 710)
+		            .attr("x2", 410) 
+		            .attr("y2", 770) 
+		            .style("stroke", "black")
+		            .style("stroke-width", 1);
+		
+		        svg.append("text")
+		            .attr("x", 150) 
+		            .attr("y", 700)
+		            .text("Here are a lot of pitchers and managers.")
+		            .style("font-size", "10px")
+		            .style("fill", "black");
 					
-			// Create an SVG to place scatterplot on for data
-	                // Convert string to integer using '+' notation on the data element
 	                d3.select("svg")
 	                        .append("g")
 	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
 	                        .selectAll('dot')
 				.data(data)
-				// For each scene, the values should be within the bottom and top defined
 				.enter()
 				.append('circle')
 		                        .attr("cx", function(d) {return cxs(+d.BA*1000);})
@@ -62,22 +74,18 @@
             d3.select('#tooltip').style('opacity', 0);
           });
 						
-				// create y-axis
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+svgMargin+","+svgMargin+")")
 				  .call(d3.axisLeft(cys)
 						  .tickValues([100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400])
 						  .tickFormat(d3.format(".1f")));
 
-
-				// create x-axis
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
 				  .call(d3.axisBottom(cxs)
 						  .tickValues([0,100,200,300,400])
 						  .tickFormat(d3.format(".0f")));
 						  
-				// create x-axis labels
 				d3.select("svg").append("text")
 				  .attr("class", "xlabel")
 				  .attr("text-anchor", "end")
@@ -85,7 +93,6 @@
 				  .attr("y", svgHeight + svgMargin + 35)
 				  .text("Career Batting Average");
 				
-				// create y-axis label
 				d3.select("svg").append("text")
 				  .attr("class", "ylabel")
 				  .attr("text-anchor", "end")
