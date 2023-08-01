@@ -18,11 +18,28 @@
     <script>
     var start = 0;
     var data;
-      async function init() {
-	                // import the csv dataset  
+	    var line = svg.append("line")
+            .attr("x1", 150) // x position of the start of the line (at the unrelated annotation)
+            .attr("y1", 20) // y position of the start of the line (at the unrelated annotation)
+            .attr("x2", 350) // x position of the end of the line (at the shorter end point)
+            .attr("y2",  170) // y position of the end of the line (at the shorter end point)
+            .style("stroke", "black")
+            .style("stroke-width", 1);
+        
+        // Add an unrelated annotation
+        svg.append("text")
+            .attr("x", 50 ) // Adjust the x position of the unrelated text
+            .attr("y", 100) // Adjust the y position of the unrelated text
+            .text("Here are a lot of pitchers an managers.")
+            .style("font-size", "10px")
+            .style("fill", "black")
+
+
+	async function init() {
+
 	                data = await d3.csv("HallOfFame.csv");
 					
-					// create a tooltip
+
 					d3.select('body')
 						.append('div')
 						.attr('id', 'tooltip')
@@ -31,21 +48,19 @@
 			drawSVG();		
 	            }
     function drawSVG() {
-					// Variables for the method
+
 	                svgWidth = 700;
 	                svgHeight = 700;
 	                svgMargin = 100;
 	                cxs = d3.scaleLinear().domain([0,500]).range([0,svgWidth]);
 	                cys = d3.scaleLinear().domain([-10,180]).range([svgHeight,0]);
 					
-			// Create an SVG to place scatterplot on for data
-	                // Convert string to integer using '+' notation on the data element
+
 	                d3.select("svg")
 	                        .append("g")
 	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
 	                        .selectAll('dot')
 				.data(data)
-				// For each scene, the values should be within the bottom and top defined
 				.enter()
 				.append('circle')
 		                        .attr("cx", function(d) {return cxs(+d.OBP*1000);})
@@ -62,7 +77,6 @@
             d3.select('#tooltip').style('opacity', 0);
           });
 						
-				// create y-axis
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+svgMargin+","+svgMargin+")")
 				  .call(d3.axisLeft(cys)
@@ -70,14 +84,13 @@
 						  .tickFormat(d3.format(".1f")));
 
 
-				// create x-axis
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
 				  .call(d3.axisBottom(cxs)
 						  .tickValues([0,100,200,300,400,500])
 						  .tickFormat(d3.format(".0f")));
 						  
-				// create x-axis labels
+
 				d3.select("svg").append("text")
 				  .attr("class", "xlabel")
 				  .attr("text-anchor", "end")
@@ -85,7 +98,7 @@
 				  .attr("y", svgHeight + svgMargin + 35)
 				  .text("Career On Base Percentage");
 				
-				// create y-axis label
+
 				d3.select("svg").append("text")
 				  .attr("class", "ylabel")
 				  .attr("text-anchor", "end")
