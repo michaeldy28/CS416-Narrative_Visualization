@@ -18,25 +18,13 @@
     <script>
     var start = 0;
     var data;
-	    var line = svg.append("line")
-            .attr("x1", 150) // x position of the start of the line (at the unrelated annotation)
-            .attr("y1", 20) // y position of the start of the line (at the unrelated annotation)
-            .attr("x2", 350) // x position of the end of the line (at the shorter end point)
-            .attr("y2",  170) // y position of the end of the line (at the shorter end point)
-            .style("stroke", "black")
-            .style("stroke-width", 1);
-        
-        // Add an unrelated annotation
-        svg.append("text")
-            .attr("x", 50 ) // Adjust the x position of the unrelated text
-            .attr("y", 100) // Adjust the y position of the unrelated text
-            .text("Here are a lot of pitchers an managers.")
-            .style("font-size", "10px")
-            .style("fill", "black")
+	var svg;
+	    var line;
+	    
 
 
 	async function init() {
-
+			svg = d3.select("svg");
 	                data = await d3.csv("HallOfFame.csv");
 					
 
@@ -55,7 +43,22 @@
 	                cxs = d3.scaleLinear().domain([0,500]).range([0,svgWidth]);
 	                cys = d3.scaleLinear().domain([-10,180]).range([svgHeight,0]);
 					
+			line = svg.append("line")
+            .attr("x1", 150) // x position of the start of the line (at the unrelated annotation)
+            .attr("y1", 20) // y position of the start of the line (at the unrelated annotation)
+            .attr("x2", 350) // x position of the end of the line (at the shorter end point)
+            .attr("y2", 170) // y position of the end of the line (at the shorter end point)
+            .style("stroke", "black")
+            .style("stroke-width", 1);
 
+        // Add an unrelated annotation
+        svg.append("text")
+            .attr("x", 50) // Adjust the x position of the unrelated text
+            .attr("y", 100) // Adjust the y position of the unrelated text
+            .text("Here are a lot of pitchers and managers.")
+            .style("font-size", "10px")
+            .style("fill", "black");
+	    
 	                d3.select("svg")
 	                        .append("g")
 	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
