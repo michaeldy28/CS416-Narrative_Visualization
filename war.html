@@ -18,13 +18,25 @@
     <script>
     var start = 0;
     var data;
-var svg;
-var line;  
+	    var line = svg.append("line")
+            .attr("x1", 150) // x position of the start of the line (at the unrelated annotation)
+            .attr("y1", 20) // y position of the start of the line (at the unrelated annotation)
+            .attr("x2", 350) // x position of the end of the line (at the shorter end point)
+            .attr("y2",  170) // y position of the end of the line (at the shorter end point)
+            .style("stroke", "black")
+            .style("stroke-width", 1);
+        
+        // Add an unrelated annotation
+        svg.append("text")
+            .attr("x", 50 ) // Adjust the x position of the unrelated text
+            .attr("y", 100) // Adjust the y position of the unrelated text
+            .text("Here are a lot of pitchers an managers.")
+            .style("font-size", "10px")
+            .style("fill", "black")
 
 
+	async function init() {
 
-	 function init() {
-			svg = d3.select("svg");
 	                data = await d3.csv("HallOfFame.csv");
 					
 
@@ -95,22 +107,6 @@ var line;
 				  .attr("dy", ".75em")
 				  .attr("transform", "rotate(-90)")
 				  .text("Career Wins Above Replacement as Batters");  
-
-	    			
-	    			line = svg.append("line")
-            .attr("x1", 150) // x position of the start of the line (at the unrelated annotation)
-            .attr("y1", 20) // y position of the start of the line (at the unrelated annotation)
-            .attr("x2", 350) // x position of the end of the line (at the shorter end point)
-            .attr("y2", 170) // y position of the end of the line (at the shorter end point)
-            .style("stroke", "black")
-            .style("stroke-width", 1);
-
-	    		 svg.append("text")
-            .attr("x", 50) // Adjust the x position of the unrelated text
-            .attr("y", 100) // Adjust the y position of the unrelated text
-            .text("Here are a lot of pitchers an managers.")
-            .style("font-size", "10px")
-            .style("fill", "black");
 	
 }
 	
