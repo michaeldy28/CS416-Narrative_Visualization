@@ -94,11 +94,7 @@ function main() {
                         .text(ASGPlayers[i]);
                 }
 
-                // Update the current tooltip reference
-                currentTooltip = tooltip;
-            });
-
-        var line = svg.append("line")
+                var line = svg.append("line")
             .attr("x1", 140) // x position of the start of the line (at the unrelated annotation)
             .attr("y1", 60) // y position of the start of the line (at the unrelated annotation)
             .attr("x2", width / 2) // x position of the end of the line (at the shorter end point)
@@ -117,6 +113,6 @@ function main() {
             .attr("x", 5) // Adjust the x position of the second line
             .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
             .text("that represent that nationality and their average overall rating.");
-
-
+                
+            });
 }
