@@ -56,7 +56,8 @@ function main() {
                 return color(d.data.ASG);
             })
             .attr('stroke', 'black') // Add a black stroke to the pie slices
-            .attr('stroke-width', 1) // Set the width of the stroke
+            .style('stroke-width', 0.5px) // Set the width of the stroke
+            .style("opacity", 0.7)
             .on('click', function (event, d) {
                 // Remove the current tooltip, if any
                 if (currentTooltip) {
@@ -77,7 +78,7 @@ function main() {
 
                 var tooltipText = tooltip.append('text')
                     .attr('class', 'tooltip-text')
-                    .attr('x', 1000) // Adjust the x position of the text
+                    .attr('x', 5) // Adjust the x position of the text
                     .attr('y', height - 400) // Adjust the y position of the text
                     .text(d.data.ASG + " All Star Games Played: " + d.data.count);
 
