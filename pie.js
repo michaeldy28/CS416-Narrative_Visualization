@@ -115,4 +115,4 @@ function main() {
             .text("that represent that nationality and their average overall rating.");
                 
             });
-}
+};
