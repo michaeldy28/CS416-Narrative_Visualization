@@ -14,25 +14,21 @@
         Scatter Plot Chart for the Relation between WAR and OBP
       </center>
     </h1>
+    <p class="p1"> Hover over the circles to see who they represent!</p>
     <svg class="main-svg"></svg>
     <script>
     var start = 0;
     var data;
-	var svg;
-	    var line;
+    var svg;
+    var line;
 	    
-
-
 	async function init() {
 			svg = d3.select("svg");
 	                data = await d3.csv("HallOfFame.csv");
-					
-
-					d3.select('body')
-						.append('div')
-						.attr('id', 'tooltip')
-						.attr('style', 'position: absolute; opacity: 0;');
-					
+			d3.select('body')
+			  .append('div')
+			  .attr('id', 'tooltip')
+			  .attr('style', 'position: absolute; opacity: 0;');		
 			drawSVG();		
 	            }
     function drawSVG() {
@@ -44,21 +40,20 @@
 	                cys = d3.scaleLinear().domain([-10,180]).range([svgHeight,0]);
 					
 			line = svg.append("line")
-            .attr("x1", 250) // x position of the start of the line (at the unrelated annotation)
-            .attr("y1", 710) // y position of the start of the line (at the unrelated annotation)
-            .attr("x2", 410) // x position of the end of the line (at the shorter end point)
-            .attr("y2", 770) // y position of the end of the line (at the shorter end point)
-            .style("stroke", "black")
-            .style("stroke-width", 1);
-
-        // Add an unrelated annotation
-        svg.append("text")
-            .attr("x", 150) // Adjust the x position of the unrelated text
-            .attr("y", 700) // Adjust the y position of the unrelated text
-            .text("Here are a lot of pitchers and managers.")
-            .style("font-size", "10px")
-            .style("fill", "black");
-	    
+		            .attr("x1", 250) 
+		            .attr("y1", 710) 
+		            .attr("x2", 410) 
+		            .attr("y2", 770)
+		            .style("stroke", "black")
+		            .style("stroke-width", 1);
+		
+		        svg.append("text")
+		            .attr("x", 150) /
+		            .attr("y", 700) 
+		            .text("Here are a lot of pitchers and managers.")
+		            .style("font-size", "10px")
+		            .style("fill", "black");
+			    
 	                d3.select("svg")
 	                        .append("g")
 	                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
@@ -76,23 +71,24 @@
 							  .style("left", (d3.event.pageX) + "px")             
 							  .style("top", (d3.event.pageY - 50) + "px")
 							  .html("Name: " + d.Name + "<br/>" + "Career WAR: " + d.WAR + "<br/>" + "On-Base Percentage: " + d.OBP);
-							}).on("mouseout", function() {
-            d3.select('#tooltip').style('opacity', 0);
-          });
+							})
+						.on("mouseout", function() {
+					            d3.select('#tooltip').style('opacity', 0);
+					          });
 						
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+svgMargin+","+svgMargin+")")
 				  .call(d3.axisLeft(cys)
-						  .tickValues([-10,0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170])
-						  .tickFormat(d3.format(".1f")));
+				  .tickValues([-10,0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170])
+				  .tickFormat(d3.format(".1f")));
 
 
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
 				  .call(d3.axisBottom(cxs)
-						  .tickValues([0,100,200,300,400,500])
-						  .tickFormat(d3.format(".0f")));
-						  
+				  .tickValues([0,100,200,300,400,500])
+				  .tickFormat(d3.format(".0f")));
+				  
 
 				d3.select("svg").append("text")
 				  .attr("class", "xlabel")
