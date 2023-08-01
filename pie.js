@@ -13,7 +13,7 @@ function main() {
         "#0000FF", "#3300FF"]);
 
     var pie = d3.pie().value(function (d) {
-        return d.count; // Use the "count" property for pie slices
+        return d.count; // Use the "count" property for pie slice
     });
 
     var path = d3.arc().outerRadius(radius - 40).innerRadius(105);
