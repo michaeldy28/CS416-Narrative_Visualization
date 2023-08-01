@@ -78,7 +78,7 @@ function main() {
 
                 var tooltipText = tooltip.append('text')
                     .attr('class', 'tooltip-text')
-                    .attr('x', 5) // Adjust the x position of the text
+                    .attr('x', 30) // Adjust the x position of the text
                     .attr('y', height - 400) // Adjust the y position of the text
                     .text(d.data.ASG + " All Star Games Played: " + d.data.count);
 
