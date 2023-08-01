@@ -98,45 +98,25 @@ function main() {
                 currentTooltip = tooltip;
             });
 
-        arc.append('text')
-            .attr('transform', function (d) {
-                return 'translate(' + label.centroid(d) + ')';
-            })
-            .text(function (d) {
-                return d.data.ASG;
-            })
-            .style('font-size', '10px');
-        const annotations = [{
-            note: {
-                label: "Longer text to show text wrapping",
-                bgPadding: 20,
-                title: "Annotations :)"
-            },
-            // Use appropriate data based on the pie chart
-            x: 100,
-            y: 100,
-            dy: 137,
-            dx: 162
-        }];
+        var line = svg.append("line")
+            .attr("x1", 140) // x position of the start of the line (at the unrelated annotation)
+            .attr("y1", 60) // y position of the start of the line (at the unrelated annotation)
+            .attr("x2", width / 2) // x position of the end of the line (at the shorter end point)
+            .attr("y2", height / 2) // y position of the end of the line (at the shorter end point)
+            .style("stroke", "black")
+            .style("stroke-width", 1);
 
-        // Create annotation configuration
-        const type = d3.annotationLabel;
-
-        const makeAnnotations = d3.annotation()
-            .editMode(true)
-            .notePadding(15)
-            .type(type)
-            .accessors({
-                x: d => label.centroid(d)[0],
-                y: d => label.centroid(d)[1]
-            })
-            .annotations(annotations);
-
-        // Call the annotations function to add the label to the donut chart
-        tooltipGroup.append("g")
-            .attr("class", "annotation-group")
-            .call(makeAnnotations);
-    });
+        // Add an unrelated annotation
+        svg.append("text")
+            .attr("x", 5) // Adjust the x position of the unrelated text
+            .attr("y", 30) // Adjust the y position of the unrelated text
+            .text("Hover over each arc of the pie chart to see the names of the players")
+            .style("font-size", "17px")
+            .style("fill", "black")
+            .append("tspan") // Add a <tspan> element for the next line
+            .attr("x", 5) // Adjust the x position of the second line
+            .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
+            .text("that represent that nationality and their average overall rating.");
 
 
 }
