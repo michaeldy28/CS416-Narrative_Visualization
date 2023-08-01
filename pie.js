@@ -46,7 +46,7 @@ function main() {
         // Convert the object to an array
         var ASGCountsArray = Object.values(ASGCounts);
 
-                var line = svg.append("line")
+        var line = svg.append("line")
             .attr("x1", width/2) // x position of the start of the line (at the unrelated annotation)
             .attr("y1", height/2 + 20) // y position of the start of the line (at the unrelated annotation)
             .attr("x2", width/2 + 150) // x position of the end of the line (at the shorter end point)
@@ -64,7 +64,7 @@ function main() {
             .append("tspan") // Add a <tspan> element for the next line
             .attr("x", width/2) // Adjust the x position of the second line
             .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
-            .text("Can you find out why this part is so large?");
+            .text("Did you find out why this part is so large?");
 
         var arc = tooltipGroup.selectAll('.arc') // Use the new 'g' element for the pie chart
             .data(pie(ASGCountsArray))
