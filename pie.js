@@ -18,6 +18,8 @@ function main() {
     var path = d3.arc().outerRadius(radius - 40).innerRadius(105);
     var label = d3.arc().outerRadius(radius).innerRadius(radius - 250);
 
+    var currentTooltip = null; // Variable to store the reference to the current tooltip
+
     d3.dsv(',', 'HallOfFame.csv').then(function (data) {
 
         var filteredData = data.filter(function (d) {
@@ -53,7 +55,14 @@ function main() {
             .attr('fill', function (d) {
                 return color(d.data.ASG);
             })
+            .attr('stroke', 'black') // Add a black stroke to the pie slices
+            .attr('stroke-width', 1) // Set the width of the stroke
             .on('click', function (event, d) {
+                // Remove the current tooltip, if any
+                if (currentTooltip) {
+                    currentTooltip.remove();
+                }
+
                 // Show the tooltip on click
                 var tooltip = svg.append('g')
                     .attr('class', 'tooltip')
@@ -90,6 +99,9 @@ function main() {
                         .attr('dy', 20) // Adjust the y position of the additional text
                         .text(ASGPlayers[i]);
                 }
+
+                // Update the current tooltip reference
+                currentTooltip = tooltip;
             });
 
         arc.append('text')
@@ -100,7 +112,6 @@ function main() {
                 return d.data.ASG;
             })
             .style('font-size', '10px');
-
 
     });
 }
