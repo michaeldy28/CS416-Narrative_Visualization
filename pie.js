@@ -4,7 +4,8 @@ function main() {
         height = svg.attr("height"),
         radius = Math.min(width, height) / 2;
 
-    var g = svg.append("g")
+    // Create a new 'g' element for the tooltip
+    var tooltipGroup = svg.append("g")
         .attr('transform', 'translate(' + (width / 2 + 100) + ',' + height / 2 + ')');
 
     var color = d3.scaleOrdinal(["#FF0000", "#FF3300", "#FF6600", "#FF9900", "#FFCC00", "#FFFF00", "#CCFF00", "#99FF00", "#66FF00", "#33FF00",
@@ -45,7 +46,7 @@ function main() {
         // Convert the object to an array
         var ASGCountsArray = Object.values(ASGCounts);
 
-        var arc = g.selectAll('.arc')
+        var arc = tooltipGroup.selectAll('.arc') // Use the new 'g' element for the pie chart
             .data(pie(ASGCountsArray))
             .enter().append('g')
             .attr('class', 'arc');
@@ -71,12 +72,12 @@ function main() {
                     .attr('width', 250) // Set the width of the tooltip box
                     .attr('height', 200) // Set the height of the tooltip box
                     .attr('x', 20) // Adjust the x position of the box
-                    .attr('y', height / 2 - 40); // Adjust the y position of the box
+                    .attr('y', 100); // Fixed y position for the tooltip
 
                 var tooltipText = tooltip.append('text')
                     .attr('class', 'tooltip-text')
                     .attr('x', 30) // Adjust the x position of the text
-                    .attr('y', height/2 - 100 ) // Adjust the y position of the text
+                    .attr('y', 120) // Fixed y position for the tooltip text
                     .text(d.data.ASG + " All Star Games Played: " + d.data.count);
 
                 tooltipText.append('tspan')
