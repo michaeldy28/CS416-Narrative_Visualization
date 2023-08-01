@@ -78,17 +78,12 @@ function main() {
                     .attr('class', 'tooltip-text')
                     .attr('x', 30) // Adjust the x position of the text
                     .attr('y', 120) // Fixed y position for the tooltip text
-                    .text(d.data.ASG + " All Star Games Played: " + d.data.count);
+                    .text(" Players Who Have Played " + d.data.ASG + " All Star Games: " + d.data.count);
 
                 tooltipText.append('tspan')
                     .attr('x', 30) // Adjust the x position of the additional text
                     .attr('dy', 20) // Adjust the y position of the additional text
                     .text(" ");
-
-                tooltipText.append('tspan')
-                    .attr('x', 30) // Adjust the x position of the additional text
-                    .attr('dy', 20) // Adjust the y position of the additional text
-                    .text("Players:");
 
                 // Display the array of players for the specific nationality
                 var ASGPlayers = d.data.players;
