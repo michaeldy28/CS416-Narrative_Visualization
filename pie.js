@@ -58,7 +58,7 @@ function main() {
         svg.append("text")
             .attr("x", width/2) // Adjust the x position of the unrelated text
             .attr("y", height/2) // Adjust the y position of the unrelated text
-            .text("Click parts of the chart to see who are in them!")
+            .text("Click parts of the chart to see who are in them.")
             .style("font-size", "17px")
             .style("fill", "black")
             .append("tspan") // Add a <tspan> element for the next line
