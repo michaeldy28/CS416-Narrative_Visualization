@@ -56,15 +56,15 @@ function main() {
         
         // Add an unrelated annotation
         svg.append("text")
-            .attr("x", 5) // Adjust the x position of the unrelated text
-            .attr("y", 30) // Adjust the y position of the unrelated text
-            .text("Hover over each arc of the pie chart to see the names of the players")
+            .attr("x", width/2) // Adjust the x position of the unrelated text
+            .attr("y", height/2) // Adjust the y position of the unrelated text
+            .text("Click parts of the chart to see who are in them!")
             .style("font-size", "17px")
             .style("fill", "black")
             .append("tspan") // Add a <tspan> element for the next line
             .attr("x", 5) // Adjust the x position of the second line
             .attr("dy", "1.2em") // Adjust the vertical offset to create space between lines
-            .text("that represent that nationality and their average overall rating.");
+            .text("Can you find out why this part is so large?");
 
         var arc = tooltipGroup.selectAll('.arc') // Use the new 'g' element for the pie chart
             .data(pie(ASGCountsArray))
