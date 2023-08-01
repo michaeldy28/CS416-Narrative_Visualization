@@ -55,9 +55,6 @@ function main() {
             .attr('fill', function (d) {
                 return color(d.data.ASG);
             })
-            .attr('stroke', 'black') // Add a black stroke to the pie slices
-            .style('stroke-width', 0.5px) // Set the width of the stroke
-            .style("opacity", 0.7)
             .on('click', function (event, d) {
                 // Remove the current tooltip, if any
                 if (currentTooltip) {
