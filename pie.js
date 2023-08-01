@@ -108,4 +108,4 @@ function main() {
             .style('font-size', '10px');
 
     });
-}
+};
