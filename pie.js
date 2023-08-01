@@ -108,4 +108,38 @@ function main() {
             .style('font-size', '10px');
 
     });
+
+    var tooltipGroup = svg.append("g")
+        .attr('transform', 'translate(' + (width / 2 + 100) + ',' + height / 2 + ')');
+
+    // Annotation label data
+    const annotations = [{
+        note: {
+            label: "Longer text to show text wrapping",
+            bgPadding: 20,
+            title: "Annotations :)"
+        },
+        // Use appropriate data based on the pie chart
+        x: 100,
+        y: 150,
+        dy: 137,
+        dx: 162
+    }];
+
+    // Annotation configuration
+    const type = d3.annotationLabel;
+
+    const makeAnnotations = d3.annotation()
+        .editMode(true)
+        .notePadding(15)
+        .type(type)
+        .accessors({
+            x: d => d.x, // Replace with appropriate x accessor based on your pie chart data
+            y: d => d.y // Replace with appropriate y accessor based on your pie chart data
+        })
+        .annotations(annotations);
+
+    // Call the annotations function to add the label to the pie chart
+    tooltipGroup.call(makeAnnotations);
+
 }
