@@ -16,7 +16,7 @@ function main() {
         return d.count; // Use the "count" property for pie slice
     });
 
-    var path = d3.arc().outerRadius(radius - 40).innerRadius(105);
+    var path = d3.arc().outerRadius(radius - 40).innerRadius(305);
     var label = d3.arc().outerRadius(radius).innerRadius(radius - 250);
 
     var currentTooltip = null; // Variable to store the reference to the current tooltip
