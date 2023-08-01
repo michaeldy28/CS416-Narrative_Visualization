@@ -39,7 +39,13 @@ h1 {
 }
 
 .p1 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 10px;
+}
+
+.p2 {
+    font-family: Arial, sans-serif;
     text-align: center;
     padding: 10px;
 }
